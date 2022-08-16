@@ -36,11 +36,11 @@ public class UserControllerTest {
 
     @Test
     public void create_user_happy_path() {
-        when(encoder.encode("testtest")).thenReturn("thisIsHashed");
+        when(encoder.encode("testpassword")).thenReturn("thisIsHashed");
         CreateUserRequest r = new CreateUserRequest();
         r.setUsername("Sina");
-        r.setPassword("12345678");
-        r.setConfirmPassword("12345678");
+        r.setPassword("testpassword");
+        r.setConfirmPassword("testpassword");
 
         ResponseEntity<User> response = userController.createUser(r);
         assertNotNull(response);
@@ -51,5 +51,6 @@ public class UserControllerTest {
 
         assertEquals(0, user.getId());
         assertEquals("Sina", user.getUsername());
+        assertEquals("thisIsHashed", user.getPassword());
     }
 }
