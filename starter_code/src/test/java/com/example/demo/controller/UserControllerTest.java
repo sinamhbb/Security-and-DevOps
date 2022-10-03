@@ -27,12 +27,6 @@ public class UserControllerTest {
     private CartRepository cartRepository = mock(CartRepository.class);
     private BCryptPasswordEncoder bCryptPasswordEncoder = mock(BCryptPasswordEncoder.class);
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private JacksonTester<CreateUserRequest> json;
-
     @Before
     public void setup() {
         userController = new UserController();
@@ -60,14 +54,4 @@ public class UserControllerTest {
         assertEquals("thisIsHashed",user.getPassword());
     }
 }
-
-
-
-
-
-
-
-
-
-
 
